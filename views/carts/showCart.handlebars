@@ -1,0 +1,82 @@
+
+<br />
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+
+
+            <!-- show message when admin deletes an order -->
+            {{#if successMessage}}
+                <div class="alert alert-success alert-dismissible fade show col-md-6 offset-md-3" role="alert">
+                {{successMessage}}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <br>
+            {{/if}}
+
+            {{#if errorMessage}}
+                <div class="alert alert-success alert-dismissible fade show col-md-6 offset-md-3" role="alert">
+                {{errorMessage}}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <br>
+            {{/if}}            
+
+
+            {{!-- headers --}}
+            <div class="card bg-light mb-3">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-2"><strong>Product Name</strong></div>
+                        <div class="col-sm-1"><strong>Price</strong></div>
+                        <div class="col-sm-2"><strong>Quantity</strong></div>
+                        <div class="col-sm-2"></div>
+                    </div>
+                </div>
+            </div>
+
+            {{!-- list products --}}
+            {{#each products}}
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <!-- link back to product page -->
+                                <a href="/product/{{this.prod._id}}">{{this.prod.name}}</a>
+                            </div>
+                            <div class="col-sm-1">
+                                {{this.price}}
+                            </div>
+                            <div class="col-sm-2">
+                                {{this.quantity}}
+                            </div>
+                            <div class="col-sm-2">
+                                {{!-- <a href="/cart/edit/{{this.id}}">Edit</a>
+                                <a href="/cart/delete/{{this.id}}">Delete</a> --}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {{/each}}
+
+            cart total: {{this.cartTotal}}
+
+            <br>
+            {{#if this.cartItems}}
+            <div class="float-right">
+                <input type="button" value="Cancel" class="btn btn-outline-danger" onclick="cancelUserAdd()">
+                <a href="/emptyCart" class="btn btn-outline-danger">Empty</a>
+                <input type="submit" value="Checkout" class="btn btn-outline-success" onclick="checkout()">
+            </div>
+            {{/if}}
+
+        </div>
+    </div>
+</div>
+
+
+

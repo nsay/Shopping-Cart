@@ -1,0 +1,123 @@
+
+<br>
+<div class="">
+  <div class="container-fluid">
+
+    <!-- show message when user submits an order -->
+    {{#if successMessage}}
+      <div class="alert alert-success alert-dismissible fade show col-md-6 offset-md-3" role="alert">
+        {{successMessage}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <br>
+    {{/if}}
+
+    <!-- flash any error messages -->
+    {{#if errorMessage}}
+      <div class="alert alert-danger alert-dismissible fade show col-md-6 offset-md-3" role="alert">
+        {{errorMessage}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <br>
+    {{/if}}
+
+    <div class="col-sm-10 offset-sm-1">
+      <br>          
+          <div class="card card-default">
+            <div class="card-body">
+              <form method="post" action="/orders/checkout">
+
+                <div class="form-group row">
+                  <label for="address" class="col-sm-3 col-form-label"><strong>1 Shipping Address:</strong></label>
+                  <div class="col-sm-6">
+                    {{!-- <input type="textarea" class="form-control" rows="4" cols="50" name="address" placeholder="Enter address" disabled> --}}
+                    <textarea class="form-control" rows="3" id="comment" name="address" placeholder="123 Commonwealth Ave, Boston, MA 02215" disabled></textarea>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="payment" class="col-sm-3 col-form-label"><strong>2 Payment method</strong></label>
+                  <div class="col-sm-6">
+                    <div class="card mb-3">
+                      <div class="card-body">
+                        credit card
+                        <input type="text" class="form-control" name="payment" placeholder="VISA 1234 1234 1234 1234" disabled>
+                        <div class="row">
+                          <div class="col-sm-3">
+                            exp
+                            <input type="text" class="form-control" name="payment" placeholder="01/24" disabled>
+                          </div>
+                          <div class="col-sm-3">
+                            cvc
+                            <input type="text" class="form-control" name="payment" placeholder="123" disabled>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="products" class="col-sm-3 col-form-label"><strong>3 Review items and shipping</strong></label>
+                  <div class="col-sm-6">
+
+                    {{!-- headers --}}
+                    <div class="card bg-light mb-3">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-4"><strong>Product Name</strong></div>
+                                <div class="col-sm-4"><strong>Price</strong></div>
+                                <div class="col-sm-4"><strong>Quantity</strong></div>
+                                {{!-- <div class="col-sm-2"></div> --}}
+                            </div>
+                        </div>           
+                      {{!-- list products --}}
+                      {{#each products}}
+                          <div class="card">
+                              <div class="card-body">
+                                  <div class="row">
+                                      <div class="col-sm-4">
+                                          <!-- link back to product page -->
+                                          <a href="/product/{{this.prod._id}}">{{this.prod.name}}</a>
+                                      </div>
+                                      <div class="col-sm-4">
+                                          {{convertToCurrency this.price}}
+                                      </div>
+                                      <div class="col-sm-4">
+                                          {{this.quantity}}
+                                      </div>
+                              
+                                  </div>
+                              </div>
+                          </div>
+                      {{/each}}
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="address" class="col-sm-3 col-form-label"><strong></strong></label>
+                  <div class="col-sm-6">
+
+                    <div class="float-right">
+                      <strong>Quantity: </strong> {{this.cartQuantity}}<br>
+                      <strong>Order total: </strong>{{convertToCurrency this.cartTotal}}                 
+                    <hr>
+                      <input type="button" value="Cancel" class="btn btn-outline-danger" onclick="cancelUserAdd()">
+                      <input type="submit" value="Place your order" class="btn btn-outline-success">
+                    </div>
+                  </div>
+                </div>
+              </form>
+              <br><br>
+            </div>
+          </div>
+        </div>
+
+  </div>
+</div>
+
