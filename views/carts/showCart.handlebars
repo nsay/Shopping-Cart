@@ -41,7 +41,7 @@
 
             {{!-- list products --}}
             {{#each products}}
-                <div class="card">
+                <div class="card mb-3">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-sm-2">
@@ -63,9 +63,9 @@
                 </div>
             {{/each}}
 
-            cart total: {{this.cartTotal}}
-
-            <br>
+            <div class="mb-3">
+                <b>Cart Total:</b> {{this.cartTotal}}
+            </div>
             {{#if this.cartItems}}
             <div class="float-right">
                 <input type="button" value="Cancel" class="btn btn-outline-danger" onclick="cancelUserAdd()">

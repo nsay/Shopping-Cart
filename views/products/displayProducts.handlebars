@@ -55,13 +55,23 @@
             <div class="card-body">
                 <h5 class="card-title">
                     <!-- link to product page -->
-                    <a href="/product/{{this.id}}">{{this.name}}</a>
+                    <center><a href="/product/{{this.id}}">{{this.name}}</a></center>
                 </h5>
-                
-                <span><b>Description:</b> {{truncate this.description}} </span>
-                <br><br>
-                
-                <span><b>Price:</b> {{convertToCurrency this.price}}</span><br>                
+              
+
+                <div class="container">
+                    <div class="row">
+                        <div>
+                            <center><img src="{{this.image}}" width="230" height="200"></center>
+                        </div>
+                        <div >
+                            <span style="mb-2"><b>Description:</b> {{truncate this.description}} </span>
+                            <br>
+                            <span><b>Price:</b> {{convertToCurrency this.price}}</span>
+                        </div>
+                    </div>
+                </div>
+                               
             </div>
           </div>
         <br>

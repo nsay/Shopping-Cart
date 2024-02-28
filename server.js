@@ -18,7 +18,7 @@ require('./config/passport')(passport);
 
 // setup handlebars
 const hbs = handlebars.create({
-    defaultLayout: 'main_logo',
+    defaultLayout: 'home',
     handlebars: allowInsecurePrototypeAccess(Handlebars),
     // create custom handlebars helpers to be used in views
     helpers : {

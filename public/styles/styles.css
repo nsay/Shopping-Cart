@@ -1,0 +1,17 @@
+.mountain-bg {
+  background: url('/images/mountain-bg.jpg');
+}
+
+.form-row {
+  margin-bottom: 16px;
+}
+
+.error-404 {
+  width: 450px;
+}
+
+.navbar-signedin {
+  float: right;
+  position: absolute;
+  right: 0;
+}

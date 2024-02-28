@@ -34,26 +34,25 @@
             <div class="col-sm-6">
                 <div><h5>{{data.name}}</h5></div><br>                
                 <!-- call convertToCurrency helper function in server.js -->
-                <div>{{convertToCurrency data.price}}</div><br>
-                <div>{{data.description}}</div><br>   
+                <div><b>Price:</b> {{convertToCurrency data.price}}</div><br>
+                <div><b>Description:</b> {{data.description}}</div><br>   
 
               <div>
-                <i>Only {{data.quantity}} left in stock - order soon.</i><br>              
-                <br><br>
+                <i>Only {{data.quantity}} left in stock - order soon.</i><br><br>
               </div>
 
                 <form method="post" action="/cart/add/{{data.id}}">
                   <div class="form-group row">
-                    <div class="col-sm-10">
+                    <div class="col-sm-10" style="margin-bottom: 20px">
                       <div class="row">
-                        <label for="qty">Quantity:</label>&nbsp;
-                          <select class="form-control col-sm-2" data-style="btn-info" name="prodQty">
-                              {{!-- loop through product count --}}
-                              {{#each data.prodCountArray}}
-                                {{!-- list the index values for the dropdown --}}
-                                <option value="{{this}}">{{this}}</option>
-                              {{/each}}
-                          </select>
+                        <label class="row col-5" for="qty">Select Quantity:</label>
+                        <select class="form-control col" data-style="btn-info" name="prodQty">
+                            {{!-- loop through product count --}}
+                            {{#each data.prodCountArray}}
+                              {{!-- list the index values for the dropdown --}}
+                              <option value="{{this}}">{{this}}</option>
+                            {{/each}}
+                        </select>
                       </div>
                     </div>
                     <br><br>

@@ -27,7 +27,8 @@ module.exports.adminDisplayProducts =
                     name: product.name,
                     description: product.description,
                     price: product.price,
-                    quantity: product.quantity
+                    quantity: product.quantity,
+                    image: product.image
                 }
             });
 
@@ -127,7 +128,7 @@ module.exports.adminSaveAfterEdit =
                 product.name = req.body.name
                 product.description = req.body.description,
                 product.price = price,
-                product.quantity = qty           
+                product.quantity = qty     
 
                 product.save((err) => {
                     if (err)

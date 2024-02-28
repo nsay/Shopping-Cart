@@ -31,28 +31,27 @@
             <div class="card-body">
               <form method="post" action="/orders/checkout">
 
-                <div class="form-group row">
-                  <label for="address" class="col-sm-3 col-form-label"><strong>1 Shipping Address:</strong></label>
+                <div class="form-group row  mb-3">
+                  <label for="address" class="col-sm-3 col-form-label"><strong>Shipping Address:</strong></label>
                   <div class="col-sm-6">
-                    {{!-- <input type="textarea" class="form-control" rows="4" cols="50" name="address" placeholder="Enter address" disabled> --}}
-                    <textarea class="form-control" rows="3" id="comment" name="address" placeholder="123 Commonwealth Ave, Boston, MA 02215" disabled></textarea>
+                     <textarea class="form-control" rows="3" id="comment" name="address" placeholder="123 Commonwealth Ave, Boston, MA 02215" disabled></textarea>
                   </div>
                 </div>
 
                 <div class="form-group row">
-                  <label for="payment" class="col-sm-3 col-form-label"><strong>2 Payment method</strong></label>
+                  <label for="payment" class="col-sm-3 col-form-label"><strong>Payment Method:</strong></label>
                   <div class="col-sm-6">
                     <div class="card mb-3">
                       <div class="card-body">
-                        credit card
+                        Credit Card
                         <input type="text" class="form-control" name="payment" placeholder="VISA 1234 1234 1234 1234" disabled>
-                        <div class="row">
+                        <div class="row mt-2">
                           <div class="col-sm-3">
-                            exp
+                            Expiration
                             <input type="text" class="form-control" name="payment" placeholder="01/24" disabled>
                           </div>
                           <div class="col-sm-3">
-                            cvc
+                            CVC
                             <input type="text" class="form-control" name="payment" placeholder="123" disabled>
                           </div>
                         </div>
@@ -61,8 +60,8 @@
                   </div>
                 </div>
 
-                <div class="form-group row">
-                  <label for="products" class="col-sm-3 col-form-label"><strong>3 Review items and shipping</strong></label>
+                <div class="form-group row ">
+                  <label for="products" class="col-sm-3 col-form-label"><strong>Review Items and Shipping</strong></label>
                   <div class="col-sm-6">
 
                     {{!-- headers --}}

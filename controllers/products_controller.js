@@ -32,7 +32,8 @@ module.exports.displayProducts =
                         name: product.name,
                         description: product.description,
                         price: product.price,
-                        quantity: product.quantity
+                        quantity: product.quantity,
+                        image: product.image
                     }
                 });
                 res.render('products/displayProducts',
@@ -48,7 +49,8 @@ module.exports.displayProducts =
                           name: product.name,
                           description: product.description,
                           price: product.price,
-                          quantity: product.quantity
+                          quantity: product.quantity,
+                          image: product.image
                       };
                   });
                   res.render('products/displayProducts', { title: "List of Products", data: results });
@@ -90,6 +92,7 @@ module.exports.showProduct =
                         description: prod.description,
                         price: prod.price,
                         quantity: prod.quantity,
+                        image: prod.image,
                         prodCountArray: prodCountArray
                     }
                 });

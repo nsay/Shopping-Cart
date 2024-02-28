@@ -28,7 +28,7 @@ module.exports.getProducts =
         }
         // handle error if format is not JSON or XML
         else {
-            res.end("<br /><div class='container'><div class='row'><div class='col-sm-12'><div><h3>404 - Not Found</h3><br><img src='/images/404_error.jpg' alt='404 error'></div></div></div></div>");
+            res.end("<br /><div class='container'><div class='row'><div class='col-sm-12'><div><h3>404 - Not Found</h3><br><img src='/images/404_error.jpg' alt='404 error' style='width: 350px'></div></div></div></div>");
         }
 
     });
@@ -63,7 +63,7 @@ module.exports.getProductByName =
         }
         // handle error if format is not JSON or XML
         else {
-            res.end("<br /><div class='container'><div class='row'><div class='col-sm-12'><div><h3>404 - Not Found</h3><br><img src='/images/404_error.jpg' alt='404 error'></div></div></div></div>");
+            res.end("<br /><div class='container'><div class='row'><div class='col-sm-12'><div><h3>404 - Not Found</h3><br><img src='/images/404_error.jpg' alt='404 error' style='width: 350px'></div></div></div></div>");
         }
 
     });
@@ -100,7 +100,7 @@ module.exports.getProductByPriceRange =
         }
         // handle error if format is not JSON or XML
         else {
-            res.end("<br /><div class='container'><div class='row'><div class='col-sm-12'><div><h3>404 - Not Found</h3><br><img src='/images/404_error.jpg' alt='404 error'></div></div></div></div>");
+            res.end("<br /><div class='container'><div class='row'><div class='col-sm-12'><div><h3>404 - Not Found</h3><br><img src='/images/404_error.jpg' alt='404 error' style='width: 350px'></div></div></div></div>");
         }
 
     });
