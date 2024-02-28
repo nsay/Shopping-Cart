@@ -21,7 +21,6 @@ This is a simple Shopping Cart website modeled after a ski resort shop. This is 
 3. Start your MongoDB instance
     - Run ```brew services start mongodb-community```
     - Run ```mongosh```
-    - Run ```brew services stop mongodb-community```
 
 4. In your MongoDB GUI or CLI, please create the following:
     - Create a new database called ```shopping_cart```
