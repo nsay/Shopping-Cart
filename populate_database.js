@@ -24,7 +24,6 @@ connection.on("open", async () => {
         description: 'Ride the slopes in style with our top-notch snowboards! Guaranteed to turn heads and carve fresh powder like a boss!',
         price: 500,
         quantity: 80,
-        image: '/images/snowboards.jpg'
     });
     await product.save();
     
@@ -34,7 +33,6 @@ connection.on("open", async () => {
         description: 'Slice through the snow like a pro with our premium skis! Engineered for maximum speed, agility, and epic mountain adventures!',
         price: 700,
         quantity: 30,
-        image: '/images/skis.jpg'
     });
     await product.save();
 
@@ -44,7 +42,6 @@ connection.on("open", async () => {
         description: 'Protect your noggin and look cool doing it with our sleek helmets! Because safety never goes out of style on the slopes!',
         price: 25,
         quantity: 10,
-        image: '/images/helmets.jpg'
     });
     await product.save();
 
@@ -54,7 +51,6 @@ connection.on("open", async () => {
         description: 'Stay warm and stylish on the mountain with our cozy jackets! Designed to keep you snug as a bug while you shred!',
         price: 50,
         quantity: 10,
-        image: '/images/jackets.jpg'
     });
     await product.save();
 
@@ -64,7 +60,6 @@ connection.on("open", async () => {
         description: 'From pristine peaks to powdery runs, our durable pants will keep you dry and comfortable all day long! Even if you take a tumble or two!',
         price: 35,
         quantity: 5,
-        image: '/images/pants.jpg'
     });
     await product.save();
 
@@ -74,7 +69,6 @@ connection.on("open", async () => {
         description: 'Strap into comfort and performance with our high-performance boots! Because happy feet make for epic rides down the mountain!',
         price: 15,
         quantity: 25,
-        image: '/images/boots.jpg'
     });
     await product.save();
     

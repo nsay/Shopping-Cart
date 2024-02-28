@@ -17,7 +17,6 @@ const productSchema = new Schema({
     description: { type: String, trim: true, required: true },
     price: { type: Number, trim: true, required: true },
     quantity: { type: Number, trim: true, required: true },
-    image: { type: String },
     qtyCount: [String] 
 });
 
@@ -62,7 +61,6 @@ module.exports.getXmlProducts = (products) => {
             + ' <description>' + products[i].description + '</description>\n'
             + ' <price>' + products[i].price + '</price>\n'
             + ' <quantity>' + products[i].quantity + '</quantity>\n',
-            + ' <image>' + products[i].image + '</image>\n'    
             + ' <qtyCount>' + products[i].qtyCount + '</qtyCount>\n'  
             + '</product>\n';          
     }

@@ -28,7 +28,6 @@ module.exports.adminDisplayProducts =
                     description: product.description,
                     price: product.price,
                     quantity: product.quantity,
-                    image: product.image
                 }
             });
 
