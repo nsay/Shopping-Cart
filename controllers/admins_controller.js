@@ -89,7 +89,7 @@ module.exports.adminEditProduct =
 	        return res.render('404');
 
             res.render('admins/adminEditProduct',
-	          {title:"Edit prod", 
+	          {title:"Edit Product", 
                   data: { id: prod._id,
                         name: prod.name,
                         description: prod.description,
@@ -204,7 +204,6 @@ module.exports.adminDisplayOrders =
             } else {
                 // else no err so loop through the user's order history
                 userOrders.forEach((order) => {
-                    // console.log(order.createdAt);
 
                     // array to hold the products of an order
                     var productsArray = [];
@@ -249,8 +248,6 @@ module.exports.adminDeleteOrder =
 
             // loop through products in cart to get quantity and prod id's
             for (var productId in cartProds) {
-                // console.log(cartProds[productId].quantity);
-                // console.log(productId);
 
                 // the quantity deleted from the order needs to be added back to Product table
                 var deletedProdQty = cartProds[productId].quantity
@@ -264,10 +261,6 @@ module.exports.adminDeleteOrder =
 
                     // add back what was in the deleted order
                     product.quantity = product.quantity + deletedProdQty;
-                    // // update array of quantity count
-                    // var qty = product.quantity;
-                    // var getQtyArr = ProductDb.getProductCount(qty);                    
-                    // product.qtyCount = getQtyArr;
 
                     product.save((err) => {
                         if (err)
@@ -309,9 +302,6 @@ module.exports.adminEditOrder =
                         id: order._id,
                         products: order.shoppingCart.products,
                         dropdownArr: dropdownArr
-                        // orderTotal: order.orderTotal,
-                        // orderQuantity: order.orderQuantity,
-                        // createdAt: order.createdAt
                     }
                 });  
 
@@ -345,16 +335,12 @@ module.exports.adminSaveAfterEditOrder = async function(req, res, next) {
             prodIdQtyArray.forEach(prod => {
                 var formProdId2 = prod.id;
                 var formProdQty2 = prod.newQuantity;
-
-                // console.log('formProdId2', formProdId2);
-                // console.log('formProdQty2', formProdQty2);
                 prodCount += 1;
                 updateUserOrder(formProdId2, formProdQty2, orderId, req, res, prodCount);
             });
 
         } else {
             // there is only one product to edit in the order
-            // prodIdQtyArray.push({ "newQuantity": formProdQty, "id": formProdId });
             prodCount = -1;
             updateUserOrder(formProdId, formProdQty, orderId, req, res, prodCount);
         }
@@ -413,7 +399,6 @@ module.exports.adminSaveAfterEditOrder = async function(req, res, next) {
                                 * user is adding items to order
                                 * ********************************************************/
                                 if (formProdQty > prodOrderQty) {
-                                    // console.log('adding...')
                                     // find how many items are trying to be added to the order
                                     var additionalItems = formProdQty - prodOrderQty;
 
@@ -478,7 +463,6 @@ module.exports.adminSaveAfterEditOrder = async function(req, res, next) {
                                 * user is deleting items from order
                                 * ********************************************************/
                                 else if (formProdQty < prodOrderQty) {
-                                    // console.log('deleteing items...')
                                     // find how many items are trying to be removed from the order
                                     var itemsToRemove = prodOrderQty - formProdQty;
                                     // check if the new value is >= 0

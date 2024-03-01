@@ -10,7 +10,7 @@ This is a simple Shopping Cart website modeled after a ski resort shop. This is 
 
 ## Instructions:
 
-#### Required Setup and Installs
+#### Required Setup and Installs (MAC)
 1. Make sure you install NodeJS and MongoDB.
 
 2. On my local machine, I have the following installed:

@@ -27,11 +27,11 @@
 
         <div class="row">            
             <div class="col-sm-6 text-center">
-              {{!-- image --}}
+              <img src="/images/{{data.name}}.jpg" width="400" height="400">
             </div>
             
             <!-- product details -->
-            <div class="col-sm-6">
+            <div class="col-sm-6" style="background-color: #fff;">
                 <div><h5>{{data.name}}</h5></div><br>                
                 <!-- call convertToCurrency helper function in server.js -->
                 <div><b>Price:</b> {{convertToCurrency data.price}}</div><br>

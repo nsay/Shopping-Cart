@@ -1,4 +1,4 @@
-// make sure users are authenticated before visting certain pages
+// make sure users are authenticated before visiting certain pages
 module.exports = {
     ensureAuthenticated: function (req, res, next) {
         // isAuthenticated comes from passport

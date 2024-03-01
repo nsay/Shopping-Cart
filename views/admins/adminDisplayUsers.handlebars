@@ -2,23 +2,33 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-12">
-
-        {{#each userData}}
-            <div class="card">
+        <div class="card bg-light mb-3">
                 <div class="card-body">
-                    <div class="row offset-sm-2">
-                        <div class="col-sm-4">
-                            {{this.firstName}} &nbsp; {{this.lastName}}
-                        </div>
-                        <div class="col-sm-4">
-                            <a href="/admin/orders/user/{{this.id}}">{{this.email}}</a>
-                        </div>
+                    <div class="row">
+                        {{!-- <div class="col-sm-1"><strong>ID</strong></div> --}}
+                        <div class="col-sm-2"><strong>First Name</strong></div>
+                        <div class="col-sm-4"><strong>Last Name</strong></div>
+                        <div class="col-sm-6"><strong>Email Address</strong></div>
                     </div>
                 </div>
             </div>
-            <br>
+        {{#each userData}}
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-2">
+                        {{this.firstName}}
+                    </div>
+                    <div class="col-sm-4">
+                        {{this.lastName}}
+                    </div>
+                    <div class="col-sm-6">
+                        <a href="/admin/orders/user/{{this.id}}">{{this.email}}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
         {{/each}}
-
     </div>
   </div>
 </div>

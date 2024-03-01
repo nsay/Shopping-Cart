@@ -15,3 +15,13 @@
   position: absolute;
   right: 0;
 }
+
+.user-profile {
+  height: 219px;
+  background-color: rgba(248,249,250, .9) !important;
+}
+
+.edit-product-title {
+  background-color: #fff;
+  border-radius: 8px;
+}

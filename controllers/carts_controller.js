@@ -49,7 +49,6 @@ module.exports.saveProductToCart =
                                       quantity: prodQty }
                 productInCart = cart.products[id];  // store the new product in variable 
                 req.session.cart = cart;  // store back to session
-                // console.log('req.session.cart', cart.products[id].quantity);
                 alreadyAddedQty = true;
             }
 
@@ -59,7 +58,6 @@ module.exports.saveProductToCart =
             if (alreadyAddedQty != true) {
                 productInCartQtyCheck += prodQty;
             }
-            // console.log('productInCartQtyCheck', productInCartQtyCheck);
 
             // if the user adds less <= the number of items in the database for that product
             if (productInCartQtyCheck <= product.quantity) {
@@ -69,20 +67,16 @@ module.exports.saveProductToCart =
                     // increment the product quantity to be whatever was passed in
                     productInCart.quantity += prodQty;
                     req.session.cart = cart;  // store back to session
-                    // console.log('increment', productInCart.quantity);
                 }
 
                 // price of the product added multiplied by the quantity in cart
                 productInCart.price = productInCart.prod.price * productInCart.quantity;
-                // console.log(productInCart.price);
 
                 // increment the cart quantity by adding onto whatever quantity is aleady there
                 cart.cartQuantity += Number(prodQty);
-                // console.log(cart.cartQuantity);
 
                 // add product price to cartTotal.  multiply products in cart price by quantity
                 cart.cartTotal += productInCart.prod.price * prodQty;
-                // console.log(cart.cartTotal);
 
                 req.session.cart = cart;  // store cart with products in the session
 
@@ -103,7 +97,6 @@ module.exports.showCart =
     (req, res, next) => {
         // get the shopping cart from the session and store in a variable
         var productsInCart = req.session.cart;
-        // console.log(productsInCart);
         // if there are products in the cart show them in the cart page
         if (productsInCart) {
             var cart = new Cart(productsInCart);  // create new cart object with existing products
@@ -116,7 +109,6 @@ module.exports.showCart =
         }
         else {
             // there are no products in the cart so pass null values to the view to avoid errors and hide buttons
-            // req.flash('errorMessage', "nothing in cart");
             res.render('carts/showCart', { products: null, cartQuantity: null, cartTotal: null, cartItems: null })
         }
     };        
