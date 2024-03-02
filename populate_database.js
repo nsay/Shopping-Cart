@@ -9,7 +9,7 @@ const credentials = require("./credentials.js");
 const dbUrl = 'mongodb://' + credentials.username +
     ':' + credentials.password + '@' + credentials.host + ':' + credentials.port + '/' + credentials.database;
 
-const connection = mongoose.createConnection(dbUrl);
+const connection = mongoose.createConnection(dbUrl, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true});
 
 const ProductDb = require('./models/product.js');
 const Product = ProductDb.getProductModel(connection);

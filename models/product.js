@@ -82,7 +82,7 @@ module.exports.getXmlProducts = (products) => {
 module.exports.getProductModel = () => {
     if (connection == null) {
         console.log("Creating product model connection...");
-        connection = mongoose.createConnection(dbUrl);
+        connection = mongoose.createConnection(dbUrl, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true});
         model = connection.model("ProductModel", productSchema);
     };
     return model;

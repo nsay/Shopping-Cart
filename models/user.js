@@ -41,7 +41,7 @@ module.exports.test = () => {
 module.exports.getUserModel = () => {
     if (connection == null) {
         console.log("Creating user model connection...");
-        connection = mongoose.createConnection(dbUrl);
+        connection = mongoose.createConnection(dbUrl, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true});
         model = connection.model("UserModel", userSchema);
     };
     return model;
