@@ -1,7 +1,7 @@
-/*****************************************************************
- *  Connects to a MongoDB database, uses the Mongoose Schema,
- *  and creates and saves the data for three products.
- *****************************************************************/
+/*
+  Connects to a MongoDB database, uses the Mongoose Schema,
+  and creates and saves the data for six products.
+*/
 
 const mongoose = require('mongoose');
 const credentials = require("./credentials.js");
