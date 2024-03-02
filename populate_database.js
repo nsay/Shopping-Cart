@@ -39,7 +39,7 @@ connection.on("open", async () => {
     product = new Product({
         id: 3,
         name: 'helmets',
-        description: 'Protect your noggin and look cool doing it with our sleek helmets! Because safety never goes out of style on the slopes!',
+        description: 'Protect your noggin and look cool doing it with our sleek helmets',
         price: 25,
         quantity: 10,
     });
@@ -48,7 +48,7 @@ connection.on("open", async () => {
     product = new Product({
         id: 4,
         name: 'jackets',
-        description: 'Stay warm and stylish on the mountain with our cozy jackets! Designed to keep you snug as a bug while you shred!',
+        description: 'Stay warm and stylish on the mountain with our cozy jackets',
         price: 50,
         quantity: 10,
     });
@@ -57,7 +57,7 @@ connection.on("open", async () => {
     product = new Product({
         id: 5,
         name: 'pants',
-        description: 'From pristine peaks to powdery runs, our durable pants will keep you dry and comfortable all day long! Even if you take a tumble or two!',
+        description: 'From pristine peaks to powdery runs, our durable pants will keep you dry and comfortable all day long',
         price: 35,
         quantity: 5,
     });
@@ -66,7 +66,7 @@ connection.on("open", async () => {
     product = new Product({
         id: 6,
         name: 'boots',
-        description: 'Strap into comfort and performance with our high-performance boots! Because happy feet make for epic rides down the mountain!',
+        description: 'Strap into comfort and performance with our high-performance boots',
         price: 15,
         quantity: 25,
     });

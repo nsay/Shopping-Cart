@@ -51,18 +51,18 @@ module.exports.getProducts = () => {
 module.exports.getXmlProducts = (products) => {
     var prodXml = '<?xml version="1.0"?>\n';
     var root = 'products'; // set root node
-    prodXml = `<${root}>`; // set opening element
+    prodXml += `<${root}>`; // set opening element
 
     for (var i in products) {
         prodXml +=
-            ' <product>\n'
-            + ' <id>' + products[i]._id + '</id>\n'
-            + ' <name>' + products[i].name + '</name>\n'
-            + ' <description>' + products[i].description + '</description>\n'
-            + ' <price>' + products[i].price + '</price>\n'
-            + ' <quantity>' + products[i].quantity + '</quantity>\n',
-            + ' <qtyCount>' + products[i].qtyCount + '</qtyCount>\n'  
-            + '</product>\n';          
+            ' <product>\n' +
+            ' <id>' + products[i]._id + '</id>\n' +
+            ' <name>' + products[i].name + '</name>\n' +
+            ' <description>' + products[i].description + '</description>\n' +
+            ' <price>' + products[i].price + '</price>\n' +
+            ' <quantity>' + products[i].quantity + '</quantity>\n' +
+            ' <qtyCount>' + products[i].qtyCount + '</qtyCount>\n' +
+            ' </product>\n';
     }
     prodXml += `</${root}>`; // closing element
     return prodXml;
@@ -70,15 +70,14 @@ module.exports.getXmlProducts = (products) => {
 
 
 
-module.exports.getProductModel =
-    () => {
-        if (connection == null) {
-            console.log("Creating product model connection...");
-            connection = mongoose.createConnection(dbUrl);
-            model = connection.model("ProductModel", productSchema);
-        };
-        return model;
+module.exports.getProductModel = () => {
+    if (connection == null) {
+        console.log("Creating product model connection...");
+        connection = mongoose.createConnection(dbUrl);
+        model = connection.model("ProductModel", productSchema);
     };
+    return model;
+};
 
 
 
