@@ -69,9 +69,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // setup the express validator
 app.use(validator());
 
-// setup sessions
-// app.use(session({ secret: 'secret_pass', resave: false, saveUninitialized: false }));
-
 // sessions
 app.use(cookieSession({
     name: 'session',

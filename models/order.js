@@ -1,3 +1,14 @@
+/*
+	This Order model is the model for the Order/Checkout UI.
+
+  Database schema would be for the ordermodels collection:
+    userId
+  	shoppingCart
+	  orderTotal
+   	orderQuantity
+	  createdAt
+*/
+
 const mongoose = require('mongoose');
 const credentials = require("../credentials.js");
 
@@ -22,15 +33,14 @@ const orderSchema = new Schema({
     createdAt: {type: Date, default: Date.now}    
 });
 
-module.exports.getOrderModel =
-    () => {
-        if (connection == null) {
-            console.log("Creating order model connection...");
-            connection = mongoose.createConnection(dbUrl);
-            model = connection.model("OrderModel", orderSchema);
-        };
-        return model;
-    };
+module.exports.getOrderModel = () => {
+	if (connection == null) {
+		console.log("Creating order model connection...");
+		connection = mongoose.createConnection(dbUrl);
+		model = connection.model("OrderModel", orderSchema);
+	};
+	return model;
+};
 
 
 

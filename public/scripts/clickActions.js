@@ -1,3 +1,7 @@
+/*
+  Below are functions I've made to attach to the HTML buttons onClick().
+*/
+
 function addProduct(){
     window.location.href = '/admin/products/add';
 }

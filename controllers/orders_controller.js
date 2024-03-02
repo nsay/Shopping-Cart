@@ -1,3 +1,8 @@
+/*
+	This Orders Controller is the controller for the Order/Checkout UI.
+	routes: /orders/checkout
+*/
+
 const orderDb = require('../models/order');
 const Order = orderDb.getOrderModel();
 const Cart = require("../models/cart");
@@ -6,37 +11,35 @@ const User = UserDb.getUserModel();
 const ProductDb = require('../models/product.js');
 const Product = ProductDb.getProductModel();
 
+/*
+	****** ORDERS SECTION ******
+	This section provides the following functionalities: 
+  	1. render checkout form
+	2. update cart quantity after checkout has been submitted
+	3. save order to ordermodels database
+	4. show user's completed orders
+*/
 
 // render the order form
-module.exports.orderForm =
-    (req, res, next) => {
+module.exports.orderForm = (req, res, next) => {
+	// get the shopping cart from the session and store in a variable
+	var productsInCart = req.session.cart;
 
-        // get the shopping cart from the session and store in a variable
-        var productsInCart = req.session.cart;
+	// if there are products in the cart show them in the cart page
+	if (productsInCart) {
+		var cart = new Cart(productsInCart);  // create new cart object with existing products
+		var cartProducts = cart.getProductList();  // get the array of products in the session cart
+		var prodQty = cart.cartQuantity; // number of products in the cart
+		var cartTotal = cart.cartTotal; // total price of products in the cart    
+		res.render('orders/orderForm', { title: "Order Total", products: cartProducts, cartQuantity: prodQty, cartTotal: cartTotal });            
+	}
+	else {            
+		res.redirect('/products');
+	}
+};
 
-        // if there are products in the cart show them in the cart page
-        if (productsInCart) {
-            var cart = new Cart(productsInCart);  // create new cart object with existing products
-            var cartProducts = cart.getProductList();  // get the array of products in the session cart
-            var prodQty = cart.cartQuantity; // number of products in the cart
-            var cartTotal = cart.cartTotal; // total price of products in the cart    
-
-            // res.render('carts/showCart', { products: cartProducts, cartQuantity: prodQty, cartTotal: cartTotal });
-
-            res.render('orders/orderForm', { title: "Order Total", products: cartProducts, cartQuantity: prodQty, cartTotal: cartTotal });            
-        }
-        else {            
-            res.redirect('/products');
-        }
-    };
-
-
-
-/*************************************************************
- *  Update the session cart and product collection quantities
- *************************************************************/
+// Update the session cart and product collection quantities
 async function updateQty(sessionCart){
-
     // pass in the session cart
     var cart = new Cart(sessionCart);
         
@@ -56,63 +59,59 @@ async function updateQty(sessionCart){
             if (!prod)
                 return res.render('404');
                 
-                // the number of products in the product database collection
-                var productDbQty = Number(prod.quantity);
+			// the number of products in the product database collection
+			var productDbQty = Number(prod.quantity);
 
-                // if their are enough products in the database
-                // make sure user can't order more products than are avilable
-                if (productDbQty >= prodSessionCartQty) {
+			// if their are enough products in the database
+			// make sure user can't order more products than are avilable
+			if (productDbQty >= prodSessionCartQty) {
 
-                    // subtract the product session cart quantity 
-                    productDbQty = productDbQty - prodSessionCartQty;
-                    prod.quantity = productDbQty;  // store the new quantity
+				// subtract the product session cart quantity 
+				productDbQty = productDbQty - prodSessionCartQty;
+				prod.quantity = productDbQty;  // store the new quantity
 
-                    // update array of quantity count in product collection
-                    var qty = prod.quantity;
-                    var getQtyArr = ProductDb.getProductCount(qty);
-                    prod.qtyCount = getQtyArr;       
-                                
-                    // get the products in the shopping cart
-                    var cartProducts = cart.products;
+				// update array of quantity count in product collection
+				var qty = prod.quantity;
+				var getQtyArr = ProductDb.getProductCount(qty);
+				prod.qtyCount = getQtyArr;       
+							
+				// get the products in the shopping cart
+				var cartProducts = cart.products;
 
-                    // array to hold the products of an order
-                    var productsArray = [];
-                    
-                    // loop through the products in the cart
-                    for (var i in cartProducts) {
+				// array to hold the products of an order
+				var productsArray = [];
+				
+				// loop through the products in the cart
+				for (var i in cartProducts) {
 
-                        // update quantities for prods in order collection
-                        cartProducts[i].prod.quantity = productDbQty;
-                        cartProducts[i].prod.qtyCount = getQtyArr;
+					// update quantities for prods in order collection
+					cartProducts[i].prod.quantity = productDbQty;
+					cartProducts[i].prod.qtyCount = getQtyArr;
 
-                        // push the products into an array
-                        productsArray.push(cartProducts[i]);
-                    };
-                    // store the updated prod quantities back in the cart object
-                    cart.products = productsArray;
+					// push the products into an array
+					productsArray.push(cartProducts[i]);
+				};
+				// store the updated prod quantities back in the cart object
+				cart.products = productsArray;
 
-                    // save the new updated quantity to the database
-                    prod.save((err, updatedProd) => {
+				// save the new updated quantity to the database
+				prod.save((err, updatedProd) => {
 
-                        console.log(err, updatedProd);
-                        if (err) {
-                            res.status(500).send('save failed');
-                            return;
-                        }                
-                    });
-
-                }//if
-        }); // Product   
-    } //for
-
+					console.log(err, updatedProd);
+					if (err) {
+						res.status(500).send('save failed');
+						return;
+					}                
+				});
+			}
+    	});  
+    } 
     // return the updated values for the prod object in the session cart
-    return cart;
+	return cart;
 }
 
 
-/*************************************
- *  save an order to the database
- *************************************/
+// save an order to the database
 module.exports.saveOrder = async function
     (req, res, next) {
     
@@ -161,9 +160,7 @@ module.exports.saveOrder = async function
 };
 
 
-/*************************************
- *  show a users orders
- *************************************/
+// show a users orders
 module.exports.showOrders = 
     (req, res, next) => {
 

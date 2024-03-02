@@ -1,6 +1,26 @@
+/*
+	This REST API Controller is the controller for retrieving date from the database
+  	and displaying  data into XML and JSON.
+	
+  	routes: 
+		/rest/json/products
+		/rest/xml/products
+		/rest/json/products/{{product}}
+		/rest/xml/products/{{product}}
+		/rest/json/products/{{min_price}}/{{max_price}}
+		/rest/xml/products/{{min_price}}/{{max_price}}
+*/
+
 const DB = require('../models/product.js');
 const Product = DB.getProductModel();
 
+/*
+	****** REST API SECTION ******
+	This section provides the following functionalities: 
+  	1. get list of all products, and return JSON or XML
+	2. get list of product by name, and return JSON or XML
+	3. get list of all products within price range, and return JSON or XML
+*/
 
 // Get products and return JSON or XML
 module.exports.getProducts = (req, res, next) => {

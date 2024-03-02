@@ -1,3 +1,13 @@
+/*
+	This User model is the model for the User UI.
+
+  Database schema would be for the usermodels collection:
+    firstName
+  	lastName
+	  email
+   	password
+*/
+
 const mongoose = require('mongoose');
 const credentials = require("../credentials.js");
 
@@ -28,15 +38,14 @@ module.exports.test = () => {
     console.log("this worked");
 }
 
-module.exports.getUserModel =
-    () => {
-        if (connection == null) {
-            console.log("Creating user model connection...");
-            connection = mongoose.createConnection(dbUrl);
-            model = connection.model("UserModel", userSchema);
-        };
-        return model;
+module.exports.getUserModel = () => {
+    if (connection == null) {
+        console.log("Creating user model connection...");
+        connection = mongoose.createConnection(dbUrl);
+        model = connection.model("UserModel", userSchema);
     };
+    return model;
+};
 
 
 

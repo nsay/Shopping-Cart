@@ -1,3 +1,14 @@
+/*
+	This Product model is the model for the Home/Products UI.
+
+	Database schema would be for the productmodels collection:
+		name
+		description
+		price
+		quantity
+		qtyCount
+*/
+
 const mongoose = require('mongoose');
 const credentials = require("../credentials.js");
 
@@ -19,8 +30,6 @@ const productSchema = new Schema({
     quantity: { type: Number, trim: true, required: true },
     qtyCount: [String] 
 });
-
-// id: { type: mongoose.Types.ObjectId },
 
 // function to get an array of the quantity
 module.exports.getProductCount = (qty) => {

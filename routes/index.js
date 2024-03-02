@@ -1,14 +1,10 @@
 const express = require('express');
 const router = express.Router();
 
-const { ensureAuthenticated } = require('../config/auth');
-
-
-/*******************************************************************
- * product routes
- *******************************************************************/
+/*
+  ****** PRODUCT ROUTES ******
+*/ 
 const productController = require('../controllers/products_controller');
-
 const displayProducts = productController.displayProducts;
 const showProduct = productController.showProduct;
 
@@ -22,9 +18,9 @@ router.get('/products', displayProducts);
 // GET show product route
 router.get('/product/:id', showProduct);
 
-/*******************************************************************
- * admin routes
- *******************************************************************/
+/*
+  ****** ADMIN ROUTES ******
+*/ 
 const adminController = require('../controllers/admins_controller');
 
 // GET admin view
@@ -44,7 +40,6 @@ const adminDisplayOrders = adminController.adminDisplayOrders;
 const adminDeleteOrder = adminController.adminDeleteOrder;
 const adminEditOrder = adminController.adminEditOrder;
 const adminSaveAfterEditOrder = adminController.adminSaveAfterEditOrder;
-
 // users
 const adminDisplayUsers = adminController.adminDisplayUsers;
 
@@ -74,9 +69,9 @@ router.get('/admin/orders/edit/:id', adminEditOrder);
 router.post('/admin/orders/edit/:id', adminSaveAfterEditOrder);
 
 
-/*******************************************************************
- * user routes
- *******************************************************************/
+/*
+  ****** USER ROUTES ******
+*/ 
 
 const usersController = require('../controllers/users_controller');
 
@@ -100,9 +95,9 @@ router.post('/login', loginUser);
 // GET logout user
 router.get('/logout', logoutUser);
 
-/*******************************************************************
- * cart routes
- *******************************************************************/
+/*
+  ****** CART ROUTES ******
+*/ 
 const cartController = require("../controllers/carts_controller");
 const saveProductToCart = cartController.saveProductToCart;
 const showCart = cartController.showCart;
@@ -115,9 +110,9 @@ router.get('/cart', showCart);
 // get cart to empty it
 router.get('/emptyCart', emptyCart); 
 
-/*******************************************************************
- * order routes
- *******************************************************************/
+/*
+  ****** ORDER ROUTES ******
+*/ 
 const orderController = require('../controllers/orders_controller');
 const saveOrder = orderController.saveOrder;
 const orderForm = orderController.orderForm;
@@ -131,9 +126,9 @@ router.post('/orders/checkout', saveOrder);
 router.get('/orders', showOrders);
 
 
-/*******************************************************************
- * REST routes
- *******************************************************************/
+/*
+  ****** REST API JSON XML ROUTES ******
+*/ 
 const restController = require('../controllers/rest_controller');
 const getProducts = restController.getProducts; 
 const getProductByName = restController.getProductByName; 
@@ -145,8 +140,5 @@ router.get('/rest/:formatType/products', getProducts);
 router.get('/rest/:formatType/products/:name', getProductByName);
 // GET products that fall within a price range
 router.get('/rest/:formatType/products/:minimum/:maximum', getProductByPriceRange);
-
-/*******************************************************************
- *******************************************************************/
 
 module.exports = router;

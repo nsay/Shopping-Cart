@@ -1,6 +1,7 @@
 # Shopping Cart
  
 This is a simple Shopping Cart website modeled after a ski resort shop. This is made with the following technologies:
+- BootStrap
 - Node.js
 - Express
 - Handlebars (for view templates)

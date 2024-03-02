@@ -1,9 +1,21 @@
+/*
+  We use Passport.js for our middleware authentication system.
+  This will also help us with data persistence and keeping the user logged in.
+*/
+
 const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcryptjs');
 const userDb = require('../models/user.js');
 const User = userDb.getUserModel();
 
+
 module.exports = function(passport) {
+  /*
+      1.  Find user
+      2.  Verify if user's encrypted salted pass aka unique hash is in database
+      3a. If found, return user
+      3b. If not found, return error
+  */
     passport.use(
         new LocalStrategy({usernameField: 'email'}, (email, password, done) => {
             // find a user 
@@ -29,10 +41,10 @@ module.exports = function(passport) {
         })
     );
 
+    //After successful authentication, serializeUser() and deserializeUser() will maintain the user in session
     passport.serializeUser((user, done) => {
         done(null, user.id);
     });
-
     passport.deserializeUser((id, done) => {
         User.findById(id, (err, user) => {
             done(err, user);
