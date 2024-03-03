@@ -9,6 +9,8 @@ This is a simple Shopping Cart website modeled after a ski resort shop. This is 
 - ​Passport.js (for authentication)
 - bcrypt (for securely storing the user passwords)
 
+<img src="./media/home.png" width="500px">
+
 ---
 
 ## Initial Instructions:
